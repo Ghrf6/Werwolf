@@ -128,7 +128,7 @@ class WerewolfGame:
             self.kill_potion_used = True
     
     def hunter_shoots(self):
-        if random.random() < 0.60:
+        if random.random() < 0.65:
             werewolf_victims = [player for player in self.players if player.role == 'Werewolf' and player.alive]
             if werewolf_victims:
                 killed_werewolf = random.choice(werewolf_victims)
@@ -217,14 +217,14 @@ class WerewolfGame:
 
 # Define the number of werewolves, villagers, and the number of simulations
 num_werewolves = 3
-num_villagers = 0
+num_villagers = 2
 witch_present = True
 hunter_present = True
 amor_present = True
 blinking_girl_present = True
 secretary_present = True
-seer_present = True
-num_simulations = 10000
+seer_present = False
+num_simulations = 100000
 
 # Initialize the variables for the wins
 wolf_wins = 0
@@ -243,6 +243,6 @@ for _ in range(num_simulations):
     elif winner == "Villagers and Lovers":
         village_wins += 1
 
-# Print the results
-print(f"Werewolves won {wolf_wins} times.")
-print(f"Villagers won {village_wins} times.")
+# Calculate and print the village win percentage
+village_win_percentage = (village_wins / num_simulations) * 100
+print(f"Village win percentage: {village_win_percentage:.2f}%")
